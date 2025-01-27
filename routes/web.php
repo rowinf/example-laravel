@@ -2,7 +2,6 @@
 
 use App\Models\Job;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Arr;
 
 Route::get('/', function () {
     return view('home');
@@ -16,8 +15,7 @@ Route::get('/jobs', function () {
 
 
 Route::get('/jobs/{id}', function ($id) {
-    $jobs = Job::all();
-    $j = Arr::first($jobs, fn ($job) =>  $job['id'] == $id);
+    $j = Job::find($id);
     return view('job', ['job' => $j]);
 });
 

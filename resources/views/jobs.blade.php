@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot:heading>
-        Jops Page
+        Jobs Page
     </x-slot:heading>
 
     @foreach ($jobs as $job)
