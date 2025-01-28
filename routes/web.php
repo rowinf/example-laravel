@@ -1,9 +1,11 @@
 <?php
 
 use App\Models\Job;
+use App\Models\Skill;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    $jobs = Job::all();
     return view('home');
 });
 
@@ -13,6 +15,11 @@ Route::get('/jobs', function () {
     ]);
 });
 
+Route::get('/skills', function () {
+    return view('skills', [
+        'skills' => Skill::all()
+    ]);
+});
 
 Route::get('/jobs/{id}', function ($id) {
     $j = Job::find($id);
