@@ -10,8 +10,8 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function () {
-    $jobs = Job::with('company')->simplePaginate(3);
-    return view('jobs', [
+    $jobs = Job::with('company')->latest()->simplePaginate(20);
+    return view('jobs.index', [
         'jobs' => $jobs,
     ]);
 });
@@ -22,9 +22,22 @@ Route::get('/skills', function () {
     ]);
 });
 
+Route::get('/jobs/create', function () {
+    return view('jobs.create');
+});
+
 Route::get('/jobs/{id}', function ($id) {
     $j = Job::find($id);
-    return view('job', ['job' => $j]);
+    return view('jobs.show', ['job' => $j]);
+});
+
+Route::post('/jobs', function() {
+    
+    Job::create([
+        'title' => request('title'),
+        'salary' => request('salary'),
+        'company_id' => 1
+    ]);
 });
 
 Route::get('/contact', function () {
