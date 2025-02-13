@@ -42,7 +42,7 @@
                             @auth
                             <form method="POST" action="/logout">
                                 @csrf
-                                <x-form-button>Log Out</x-form-button>
+                                <x-form-button>Log Out {{ Auth::user()->first_name }}</x-form-button>
                             </form>
                             @endauth
                         </div>

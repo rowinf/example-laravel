@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Company;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +21,8 @@ class JobFactory extends Factory
         return [
             'title' => fake()->jobTitle(),
             'salary' => '$' . fake()->randomDigitNotNull() . '0,000',
-            'company_id' => Company::factory()
+            'company_id' => Company::factory(),
+            'user_id' => User::factory()
         ];
     }
 }
